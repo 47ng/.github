@@ -1,6 +1,0 @@
-{
-  "name": "Node.js CI/CD",
-  "description": "Continuous integration & deployment for NPM modules",
-  "categories": ["node"],
-  "filePatterns": ["^package.json$"]
-}
