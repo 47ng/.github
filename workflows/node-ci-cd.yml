@@ -2,16 +2,6 @@ name: CI/CD
 
 on:
   workflow_call:
-    inputs:
-      config-path:
-        required: true
-        type: string
-    secrets:
-      githubToken:
-        required: true
-      npmToken:
-        required: true
-
 
 env:
   FORCE_COLOR: 3 # Diplay chalk colors
@@ -42,7 +32,7 @@ jobs:
       - uses: coverallsapp/github-action@9ba913c152ae4be1327bfb9085dc806cedb44057
         name: Report code coverage
         with:
-          github-token: ${{ secrets.githubToken }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: 47ng/actions-slack-notify@main
         name: Notify on Slack
         if: always()
@@ -82,5 +72,5 @@ jobs:
         name: Semantic Release
         id: semantic
         env:
-          GITHUB_TOKEN: ${{ secrets.githubToken }}
-          NPM_TOKEN: ${{ secrets.npmToken }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
